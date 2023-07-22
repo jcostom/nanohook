@@ -68,6 +68,7 @@ def parse_hook(command):
             logger.debug(f"Effects URL: {effects_url}")
             logger.debug(f"Effects Body: {effects_body}")
             requests.put(effects_url, headers=headers, json=effects_body)
+            logger.info("Turned Nanoleaf On")
             return "Turned Nanoleaf On"
         case Hooks.OFF:
             state_url = create_state_url(HOST, AUTH_TOKEN)
@@ -75,6 +76,7 @@ def parse_hook(command):
             logger.debug(f"State URL: {state_url}")
             logger.debug(f"State Body: {state_body}")
             requests.put(state_url, headers=headers, json=state_body)
+            logger.info("Turned Nanoleaf Off")
             return "Turned Nanoleaf Off"
         case _:
             return "Hook Not Found!"
