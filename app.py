@@ -62,7 +62,7 @@ def parse_hook(command):
             effects_url = create_effects_url(HOST, AUTH_TOKEN)
             state_body = {'on': {'value': True}, 'brightness': {'value': BRIGHTNESS}}  # noqa: E501
             effects_body = {'select': EFFECT}
-            requests.put(state_url, headers=headers, json=state_body)
+            # requests.put(state_url, headers=headers, json=state_body)
             requests.put(effects_url, headers=headers, json=effects_body)
             return "Turned Nanoleaf On"
         case Hooks.OFF:
