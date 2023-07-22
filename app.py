@@ -64,10 +64,12 @@ def parse_hook(command):
             effects_body = {'select': EFFECT}
             requests.put(state_url, headers=headers, json=state_body)
             requests.put(effects_url, headers=headers, json=effects_body)
+            return "Turned Nanoleaf On"
         case Hooks.OFF:
             state_url = create_state_url(HOST, AUTH_TOKEN)
             state_body = {'on': {'value': False}}
             requests.put(state_url, headers=headers, json=state_body)
+            return "Turned Nanoleaf Off"
         case _:
             return "Hook Not Found!"
 
