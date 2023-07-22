@@ -59,15 +59,21 @@ def parse_hook(command):
     match command:
         case Hooks.ON:
             state_url = create_state_url(HOST, AUTH_TOKEN)
-            effects_url = create_effects_url(HOST, AUTH_TOKEN)
             state_body = {'on': {'value': True}, 'brightness': {'value': BRIGHTNESS}}  # noqa: E501
+            logger.debug(f"State URL: {state_url}")
+            logger.debug(f"State Body: {state_body}")
+            requests.put(state_url, headers=headers, json=state_body)
+            effects_url = create_effects_url(HOST, AUTH_TOKEN)
             effects_body = {'select': EFFECT}
-            # requests.put(state_url, headers=headers, json=state_body)
+            logger.debug(f"Effects URL: {effects_url}")
+            logger.debug(f"Effects Body: {effects_body}")
             requests.put(effects_url, headers=headers, json=effects_body)
             return "Turned Nanoleaf On"
         case Hooks.OFF:
             state_url = create_state_url(HOST, AUTH_TOKEN)
             state_body = {'on': {'value': False}}
+            logger.debug(f"State URL: {state_url}")
+            logger.debug(f"State Body: {state_body}")
             requests.put(state_url, headers=headers, json=state_body)
             return "Turned Nanoleaf Off"
         case _:
