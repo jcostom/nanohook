@@ -1,0 +1,24 @@
+---
+services:
+  nanohook:
+    image: ghcr.io/jcostom/nanohook:latest
+    container_name: nanohook
+    user: 1000:1000
+    environment:
+      - HOST=nanoleaf.mysite.org # or IP is fine too
+      - EFFECT=Hip Hop
+      - BRIGHTNESS=25
+      - AUTH_TOKEN=[generate an auth token and put it here]
+      - ON_HOOK=QcBeASDFkA6qwertYua_y8wzaE7Q2-3b
+      - OFF_HOOK=9r-K4uwRC.c_.-VRAa.oACBHc-U6Th6V
+      - TZ=America/New_York
+      - DEBUG=0
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    networks:
+      - containers
+
+networks:
+  containers:
+    external: true
