@@ -19,7 +19,7 @@ AUTH_TOKEN = os.getenv('AUTH_TOKEN')
 DEBUG = int(os.getenv('DEBUG', 0))
 
 # Version Info
-VER = "0.3.5"
+VER = "0.3.6"
 APP_VERSION = f"nanohook/{VER}"
 
 # Setup logger
